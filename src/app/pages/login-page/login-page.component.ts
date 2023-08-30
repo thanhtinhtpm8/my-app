@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,Validators ,FormBuilder} from '@angular/forms';
+import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, finalize, take, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -35,7 +36,8 @@ export class LoginPageComponent implements OnInit {
     })
     
   }
-  constructor(private fb: FormBuilder,private authService:AuthService,private message:NzMessageService){
+  constructor(private fb: FormBuilder,private authService:AuthService,
+    private message:NzMessageService,private router: Router){
 
   }
   onLogin(){
@@ -50,7 +52,8 @@ export class LoginPageComponent implements OnInit {
           localStorage.setItem('tokenAccess', res.data.accessToken);
           localStorage.setItem('username', res.data.username);
           this.message.success(message);
-          window.location.href="/home"
+        //  window.location.href="/home"
+          this.router.navigate(["home"]);
         } else {
           this.message.error(message);
         }
