@@ -33,6 +33,15 @@ export class AuthService extends BaseService{
     if (this.getToken()) { this.removeToken(); }
     return this.Post<any>(data);
   }
+  logInGoogle(data:any) {
+    const options = {
+      withCredentials: false
+    }
+    this.initOptions(options);
+    if (this.getToken()) { this.removeToken(); }
+    return this.PostbyExt<any>("logingoogle",data);
+  }
+
   register(data:any) {
     if (this.getToken()) { this.removeToken(); }
     console.log(data)
