@@ -39,7 +39,7 @@ export class AuthService extends BaseService{
     }
     this.initOptions(options);
     if (this.getToken()) { this.removeToken(); }
-    return this.PostbyExt<any>("logingoogle",data);
+    return this.PostbyExt<any>("/logingoogle",data);
   }
 
   register(data:any) {
