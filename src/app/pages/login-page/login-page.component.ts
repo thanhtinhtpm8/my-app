@@ -38,7 +38,8 @@ export class LoginPageComponent implements OnInit {
     
   }
   constructor(private fb: FormBuilder,private authService:AuthService,
-    private message:NzMessageService,private router: Router){
+    private message:NzMessageService,private router: Router)
+  {
   }
   onLogin(){
     if(this.loginForm.valid)
@@ -71,20 +72,32 @@ export class LoginPageComponent implements OnInit {
     reader.readAsDataURL(this.imageAvt);
   }
   register(){
+    const container = document.getElementById('container');
     this.loading=true;
     const formData = new FormData();
     formData.append('UserName',this.registerForm.controls['userName'].value);
     formData.append('Password', this.registerForm.controls['password'].value );
+    
     if(this.imageAvt) formData.append('Image',this.imageAvt);
+    console.log(formData)
     this.authService.register(formData).subscribe((res:any)=>{
       const { data, success, message } = res;
         if (success) {
+          this.registerForm.controls['userName'].setValue('');
+          this.registerForm.controls['password'].setValue('');
+          this.registerForm.controls['image'].setValue(null);
+          this.imageAvt=null;
+          this.imageURL=null;
           this.message.success(message);
+          this.loading=false;
+          container?.classList.remove("right-panel-active")
         } else {
           this.message.error(message);
+          this.loading=false;
         }
         this.loading=false;
-    },(err:any)=>{this.message.error(err.error);this.loading(false)})
+    },(err:any)=>{this.message.error(err.error);this.loading=false},()=>{this.loading=false;})
+  
   }
   onRegister(){
     if(this.registerForm.valid)

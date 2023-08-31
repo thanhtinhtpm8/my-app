@@ -1,9 +1,11 @@
+
+
+
 <body>
-    
-	<nz-spin [nzSpinning]="loading">
+	
 <h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
 <div class="container" id="container" >
-	<div class="form-container sign-up-container">
+	<div class="form-container sign-up-container">	
 		<form [formGroup]="registerForm">
 			<h1>Create Account</h1>
 			<div class="social-container">
@@ -17,7 +19,17 @@
 			<!-- <input type="email" placeholder="Email" /> -->
 			<input type="password" placeholder="Password" formControlName="password" required />
             <input type="file" formControlName="image" (change)="changeAvt($event)" />
-			<button  type="button" (click)="onRegister()">Sign Up</button>
+			<div class="load"  *ngIf="loading">
+				<span class="let1">r</span>  
+				<span class="let2">e</span>  
+				<span class="let3">g</span>  
+				<span class="let4">i</span>  
+				<span class="let5">s</span>  
+				<span class="let6">t</span>  
+				<span class="let7">e</span>
+				<span class="let8">r</span>   
+			</div>
+			<button  type="button" (click)="onRegister()"  *ngIf="!loading">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -25,7 +37,7 @@
 			<h1>Sign in</h1>
 			<div class="social-container">
 				
-				<app-login-with-google (submitted)="onLoginGG($event)"></app-login-with-google>
+				<app-login-with-google></app-login-with-google>
 				<!-- <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a> -->
 			</div>
@@ -33,7 +45,16 @@
 			<input type="email" placeholder="Email" formControlName="userName" required />
 			<input type="password" placeholder="Password" formControlName="password" required />
 			<a href="#">Forgot your password?</a>
-			<button (click)="onLogin()" type="button">Sign In</button>
+			<div class="load" *ngIf="loading">
+				<span class="let1">l</span>  
+				<span class="let2">o</span>  
+				<span class="let3">g</span>  
+				<span class="let4">i</span>  
+				<span class="let5">n</span>  
+				<!-- <span class="let6">n</span>  
+				<span class="let7">g</span>   -->
+			</div>
+			<button (click)="onLogin()" type="button" *ngIf="!loading">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -50,7 +71,9 @@
 			</div>
 		</div>
 	</div>
+
 </div>
+
 
 <!-- <footer>
 	<p>
@@ -60,7 +83,6 @@
 		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
 	</p>
 </footer> -->
-</nz-spin>
-   
+
     
 </body>
