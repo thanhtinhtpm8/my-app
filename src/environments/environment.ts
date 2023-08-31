@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: false, 
+  // apiURL:'https://localhost:7093/api',
+  // hubUrl:'https://localhost:7093/notify',
   apiURL:'https://app-z00a.onrender.com/api',
   hubUrl:'https://app-z00a.onrender.com/notify',
   clientId:'375743390350-lf0uh2bf7qpf0hg4ifl8mgkdaepc7rh3.apps.googleusercontent.com'
