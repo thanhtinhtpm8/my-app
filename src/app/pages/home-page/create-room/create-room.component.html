@@ -17,7 +17,10 @@
               <nz-form-control nzErrorTip="Please input your Room">
                 <nz-input-group nzPrefixIcon="user">
                   <nz-select nzMode="multiple" nzPlaceHolder="Inserted are removed" formControlName="listUser" style="width: 200px;">
-                    <nz-option *ngFor="let option of list" [nzLabel]="option.userName" [nzValue]="option"></nz-option>
+                    <nz-option nzCustomContent *ngFor="let option of list" [nzLabel]="option.userName" [nzValue]="option">
+                       <nz-avatar [nzSrc]="option.image"></nz-avatar>
+                      {{option.userName}}
+                    </nz-option>
                   </nz-select>
                 </nz-input-group>
               </nz-form-control>

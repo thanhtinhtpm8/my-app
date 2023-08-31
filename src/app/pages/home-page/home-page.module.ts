@@ -20,6 +20,8 @@ import { NzImageModule } from 'ng-zorro-antd/image';
 import { FormsModule } from '@angular/forms';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+
 @NgModule({
   declarations: [HomePageComponent,CreateRoomComponent, ChatBoxComponent],
   imports: [
@@ -40,7 +42,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     NzImageModule,
     FormsModule,
     NzSpinModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    NzAvatarModule
     
     
   ]

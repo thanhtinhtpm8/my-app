@@ -44,4 +44,14 @@ export class HomePageComponent implements OnInit {
     width: '25%',
     textAlign: 'center',
   };
+  getAvatar(idUser:any){
+    try{
+    if(this.allUser!=null&&this.allUser.length!=0)
+    {
+      if(this.allUser.filter((res:any)=>res.userid==idUser))
+          return this.allUser.filter((res:any)=>res.id==idUser)[0]!.image ||null ;
+    }
+  }catch{return null;}
+    return null;
+  }
 }
