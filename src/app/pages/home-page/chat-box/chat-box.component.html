@@ -39,7 +39,7 @@
                 <img [src]="getAvatar(item.userId)?getAvatar(item.userId):'https://bootdey.com/img/Content/avatar/avatar1.png'" class="rounded-circle mr-1" alt="Chris Wood" width="40" height="40">
               </div>
               <div class="flex-shrink-1 rounded py-2 px-3 mr-3" style="margin-right: 10px;max-width: 60%; background-color: #00bfff;">
-                <div *ngIf="item.image"><img nz-image style="max-width: 400px;"  nzSrc={{item.image}} alt=""></div>
+                <div *ngIf="item.image"><img nz-image style="max-width: 100%;"  nzSrc={{item.image}} alt=""></div>
                {{ item.content }}
               </div>
             </div>
@@ -51,7 +51,7 @@
               <div class="flex-shrink-1 "  style="margin-left: 10px;max-width: 60%;" >
                 <div class="text-muted small" style="margin-left: 10px;">{{item.userName}}</div>
                 <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3"  >
-                    <div  *ngIf="item.image"><img nz-image style="max-width: 400px;"  nzSrc={{item.image}} alt=""></div>
+                    <div  *ngIf="item.image"><img nz-image style="max-width: 100%;"  nzSrc={{item.image}} alt=""></div>
                   {{ item.content }}
                 </div>
               </div>
@@ -61,26 +61,21 @@
 
           </div>
         </div>
-
-
-
         <div class="flex-grow-0 py-3 px-4 border-top">
           <div class="input-group">
                       
 <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your Room" style="width: 700px;">
-          <nz-input-group nzPrefixIcon="user">
-          
+        <nz-form-control nzErrorTip="Please input your Room" style="width: 100%;">
+          <nz-input-group nzPrefixIcon="user" style="width: 100%;">
             <input formControlName="content" nz-input type="text" class="form-control" placeholder="Type your message" width="100%">
           </nz-input-group>
           <nz-input-group nzPrefixIcon="user">
             <!-- <input formControlName="image" (change)="OnChangeFile($event)"  type="file" > -->
-           
             <input type="file" id="upload" formControlName="image" (change)="OnChangeFile($event)" hidden/>
             <label for="upload" *ngIf="!fileImage">Choose file</label>
-            <div *ngIf="fileImage" style=" margin-left: 50px; margin-top: 20px;">
-              <img src={{imageURL}} width="300px" alt="" >
+            <div *ngIf="fileImage" style="margin-left: 50px; margin-top: 20px;">
+              <img src={{imageURL}} style="max-width: 60%;" alt="" >
             </div>
            
           </nz-input-group>

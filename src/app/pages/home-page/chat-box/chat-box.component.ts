@@ -91,12 +91,15 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
   }
 
   getAvatar(idUser:any){
+    try{
     if(this.usersDetail!=null)
     {
       if(this.usersDetail.filter((res:any)=>res.userid==idUser))
           return this.usersDetail.filter((res:any)=>res.id==idUser)[0].image ;
     }
+  } catch{
     return null;
+  }
   }
   
 
