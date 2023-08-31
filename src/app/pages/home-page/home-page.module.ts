@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 @NgModule({
   declarations: [HomePageComponent,CreateRoomComponent, ChatBoxComponent],
   imports: [
@@ -43,8 +43,8 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
     FormsModule,
     NzSpinModule,
     InfiniteScrollModule,
-    NzAvatarModule
-    
+    NzAvatarModule,
+    NzNotificationModule
     
   ]
 })

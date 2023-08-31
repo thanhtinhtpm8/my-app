@@ -6,9 +6,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { RoomService } from 'src/app/core/services/room.service';
 import { environment } from 'src/environments/environment';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { UserService } from 'src/app/core/services/user.service';
-import { pl_PL } from 'ng-zorro-antd/i18n';
 @Component({
   selector: 'app-chat-box',
   templateUrl: './chat-box.component.html',
@@ -45,9 +42,7 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
   ngAfterViewChecked(): void {    
   }
   ngOnInit(): void {
-    
     if(this.idRoom) {this.loadData(); this.loadRoomInfo();}
-    // this.username = this.authService.getUserName();
     const connection = new signalR.HubConnectionBuilder()  
     .configureLogging(signalR.LogLevel.Information)  
     .withUrl(environment.hubUrl)  
@@ -59,13 +54,16 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
     }); 
   
     connection.on("Message", (result:any) => {  
-      if(result.includes(this.authService.getUserName()))
+      if(result.userNameReceive.includes(this.authService.getUserName()))
       {
-        this.page=1;
-        this.loadData();
+        if(result.roomId==this.idRoom)
+        {
+          console.log('load');
+          this.page=1;
+          this.loadData();
+        }
       }
     });
-
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.myInfor)

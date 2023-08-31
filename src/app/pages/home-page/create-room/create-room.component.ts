@@ -27,15 +27,7 @@ export class CreateRoomComponent implements OnInit {
       roomName: [null, [Validators.required]],
       listUser:[null,[Validators.required]]
     });
-    //this.loadUser();
   }
-
-  // loadUser(){
-  //   this.userService.getListUser().subscribe((res:any)=>{
-  //     console.log(res);
-  //     this.list=res;
-  //   })
-  // }
 
   showModal(): void {
     this.isVisible = true;
