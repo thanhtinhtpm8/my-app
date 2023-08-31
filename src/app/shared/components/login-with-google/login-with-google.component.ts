@@ -42,6 +42,7 @@ export class LoginWithGoogleComponent implements OnInit{
           window.location.href="/home"
         } else {
           this.message.error(message);
+          this.submitted.emit(false);
         }
         })
       //  console.log(googleAuthUser.getAuthResponse().id_token)
@@ -51,6 +52,7 @@ export class LoginWithGoogleComponent implements OnInit{
 
   googleAuthSDK() {
     (<any>window)['googleSDKLoaded'] = () => {
+      
       (<any>window)['gapi'].load('auth2', () => {
         this.auth2 = (<any>window)['gapi'].auth2.init({
           client_id: clientID,
@@ -62,7 +64,9 @@ export class LoginWithGoogleComponent implements OnInit{
       });
     }
 
+    
     (function (d, s, id) {
+      
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       js = d.createElement('script');

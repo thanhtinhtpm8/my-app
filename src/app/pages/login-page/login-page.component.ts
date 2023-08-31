@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class LoginPageComponent implements OnInit {
   imageAvt:any=null;
   imageURL:any=null;
+  loading:any=false;
   loginForm:FormGroup = this.fb.group({
     userName:['', [Validators.required]],
     password:['', Validators.required]
@@ -38,7 +39,6 @@ export class LoginPageComponent implements OnInit {
   }
   constructor(private fb: FormBuilder,private authService:AuthService,
     private message:NzMessageService,private router: Router){
-
   }
   onLogin(){
     if(this.loginForm.valid)
@@ -46,6 +46,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
+    this.loading=true;
     this.authService.logIn(this.loginForm.value).subscribe((res:any)=>{
       const { data, success, message } = res;
         if (success) {
@@ -56,8 +57,9 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(["home"]);
         } else {
           this.message.error(message);
+          this.loading=false;
         }
-    },(err:any)=>{this.message.error(err.error)})
+    },(err:any)=>{this.message.error(err.error);this.loading=false})
   }
   changeAvt(data:any){
     this.imageAvt=data.target.files[0];
@@ -69,6 +71,7 @@ export class LoginPageComponent implements OnInit {
     reader.readAsDataURL(this.imageAvt);
   }
   register(){
+    this.loading=true;
     const formData = new FormData();
     formData.append('UserName',this.registerForm.controls['userName'].value);
     formData.append('Password', this.registerForm.controls['password'].value );
@@ -80,11 +83,14 @@ export class LoginPageComponent implements OnInit {
         } else {
           this.message.error(message);
         }
-    },(err:any)=>{this.message.error(err.error)})
+        this.loading=false;
+    },(err:any)=>{this.message.error(err.error);this.loading(false)})
   }
   onRegister(){
     if(this.registerForm.valid)
     this.register();
   }
-
+  onLoginGG(data:any){
+       this.loading=data;
+  }
 }

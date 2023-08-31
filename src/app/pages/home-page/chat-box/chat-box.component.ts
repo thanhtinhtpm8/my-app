@@ -159,10 +159,13 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
     console.log('scroll')
     if(this.content.nativeElement.scrollTop===0)
     {
-      this.loading=true;
+      
+      if(this.page!=-1)
+      {
+        this.loading=true;
       this.chatService.getListChatByIdRoom(this.idRoom,++this.page)
       .subscribe((res:any) => {
-        if(res.data.length==0) this.message.info('Hết')
+        if(res.data.length==0) {this.message.info('Hết'); this.page=-1; }
         else{
         var kq=res.data.concat(this.data);
         this.data=kq;
@@ -170,6 +173,7 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
         }
         this.loading=false;
       });
+      }
     }
   }
   loadFinish(data:any){
