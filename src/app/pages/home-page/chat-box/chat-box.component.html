@@ -75,9 +75,8 @@
             <input type="file" id="upload" formControlName="image" (change)="OnChangeFile($event)" hidden/>
             <label for="upload" *ngIf="!fileImage">Choose file</label>
             <div *ngIf="fileImage" style="margin-left: 50px; margin-top: 20px;">
-              <img src={{imageURL}} style="max-width: 30%;" alt="" >
+              <img src={{imageURL}} style="max-width:10%;" alt="" >
             </div>
-           
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>

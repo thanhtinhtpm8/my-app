@@ -11,7 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './chat-box.component.html',
   styleUrls: ['./chat-box.component.scss']
 })
-export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit{
+export class ChatBoxComponent implements OnInit{
   @Input() idRoom!:string;
   @Input() usersDetail!:any;
   @Input() myInfor!:any;
@@ -36,11 +36,7 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
       content: [''],
       image: [null],
     });}
-  ngAfterViewInit(): void { 
-  }
-  
-  ngAfterViewChecked(): void {    
-  }
+
   ngOnInit(): void {
     if(this.idRoom) {this.loadData(); this.loadRoomInfo();}
     const connection = new signalR.HubConnectionBuilder()  
@@ -129,8 +125,7 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
       if(this.validateForm.valid){
         if( this.validateForm.controls['content'].value==='' && !this.validateForm.controls['image'].value) this.message.warning('Vui lòng nhập tin nhắn!')
         else
-        { 
-         
+        {
           this.data.push({'content':formData.get('Content'),userName:this.myInfor.userName,userId:this.myInfor.id,image:this.imageURL||null})
           this.validateForm.controls['content'].setValue('');
            this.fileImage=null;
@@ -160,7 +155,6 @@ export class ChatBoxComponent implements OnInit, AfterViewChecked ,AfterViewInit
     console.log('scroll')
     if(this.content.nativeElement.scrollTop===0)
     {
-      
       if(this.page!=-1)
       {
         this.loading=true;
