@@ -1,0 +1,28 @@
+<div nz-col nzFlex="1">
+    <div style="margin-left: 20px;">
+      <div class="px-4 d-none d-md-block">
+        <div class="d-flex align-items-center">
+          <div class="flex-grow-1">
+            <input type="text" class="form-control my-3" placeholder="Search...">
+          </div>
+        </div>
+      </div>
+      <div class="list">
+      <a (click)="selectRoom(item.id)" style="margin-bottom: 20px;" class="list-group-item list-group-item-action border-0" *ngFor="let item of listRoom">
+        <div class="d-flex align-items-start">
+          <nz-avatar-group *ngIf="item.listIdUser&&item.listIdUser.length>2">
+            <nz-avatar nzIcon="user" [nzSrc]="getAvatar(item.listIdUser[0])?getAvatar(item.listIdUser[0]):'https://bootdey.com/img/Content/avatar/avatar5.png'"></nz-avatar>
+            <nz-avatar style="background-color: #fde3cf; color: #f56a00" [nzText]="'+'+(item.listIdUser.length-1)"></nz-avatar>
+          </nz-avatar-group>
+         <img *ngIf="item.listIdUser&&item.listIdUser.length<3" [src]="getAvatar(item.listIdUser[0])?getAvatar(item.listIdUser[0]):'https://bootdey.com/img/Content/avatar/avatar5.png'" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40" style="margin-right: 20px;">
+         <img *ngIf="!item.listIdUser" src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40" style="margin-right: 20px;">
+         <div class="flex-grow-1 ml-3">
+            {{item.roomName}}
+            <div class="small"><span class="fas fa-circle chat-online"></span> Online</div>
+          </div>
+        </div>
+      </a>
+    </div>
+      <hr class="d-block d-lg-none mt-1 mb-0">
+    </div>
+  </div>

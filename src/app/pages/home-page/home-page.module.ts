@@ -22,8 +22,9 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { RoomBoxComponent } from './room-box/room-box.component';
 @NgModule({
-  declarations: [HomePageComponent,CreateRoomComponent, ChatBoxComponent],
+  declarations: [HomePageComponent,CreateRoomComponent, ChatBoxComponent, RoomBoxComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

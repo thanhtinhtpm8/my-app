@@ -12,10 +12,10 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 })
 export class HomePageComponent implements OnInit {
   isVisible = false;
-  listRoom:any=[];
   allUser:any=[];
   myInfor:any;
   idRoomSelected:any=null;
+  listRoom:any=[];
   constructor(private roomService:RoomService ,
     private userService:UserService,
     private authService:AuthService,
@@ -32,18 +32,18 @@ export class HomePageComponent implements OnInit {
         console.log('SignalR Connected!');  
       }).catch(function (err) {  
         return console.error(err.toString());  
-      }); 
-    
+      });
       connection.on("Message", (result:any) => {  
         if(result.userNameReceive.includes(this.authService.getUserName()))
         {
+          this.loadRoom();
           this.createNotification('1 thông báo từ '+result.userNameSend,result.content)
         }
       });
   }
   loadRoom(){
     this.roomService.getListRooom().subscribe((data:any)=>{
-      this.listRoom=data
+      this.listRoom=data;
     })
   }
   loadAllUser(){
@@ -58,20 +58,6 @@ export class HomePageComponent implements OnInit {
   }
   selectRoom(data:any){
     this.idRoomSelected=data;
-  }
-  gridStyle = {
-    width: '25%',
-    textAlign: 'center',
-  };
-  getAvatar(idUser:any){
-    try{
-    if(this.allUser!=null&&this.allUser.length!=0)
-    {
-      if(this.allUser.filter((res:any)=>res.userid==idUser))
-          return this.allUser.filter((res:any)=>res.id==idUser)[0]!.image ||null ;
-    }
-  }catch{return null;}
-    return null;
   }
 
   createNotification(title:string,content: string): void {

@@ -1,6 +1,6 @@
 
 <div>
-    <button nz-button nzType="primary" nzSize="large" nzShape="round" (click)="showModal()" >Create Room</button>
+    <button nz-button nzType="primary"  nzShape="round" (click)="showModal()" >Create Room</button>
 </div>
 <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
       <ng-container *nzModalContent>
@@ -12,7 +12,6 @@
                 </nz-input-group>
               </nz-form-control>
             </nz-form-item>
-
             <nz-form-item>
               <nz-form-control nzErrorTip="Please input your Room">
                 <nz-input-group nzPrefixIcon="user">
@@ -25,14 +24,12 @@
                 </nz-input-group>
               </nz-form-control>
             </nz-form-item>
-          
             <nz-form-item>
               <nz-form-control>
                 <button nz-button nzType="primary" [disabled]="!validateForm.valid" (click)="createRoom()">Create</button>
               </nz-form-control>
             </nz-form-item>
           </form>
-
       </ng-container>
 </nz-modal>
 

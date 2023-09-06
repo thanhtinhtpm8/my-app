@@ -43,7 +43,7 @@
 			</div>
 			<span>or use your account</span>
 			<input type="email" placeholder="Email" formControlName="userName" required />
-			<input type="password" placeholder="Password" formControlName="password" required />
+			<input type="password" placeholder="Password" formControlName="password"/>
 			<a href="#">Forgot your password?</a>
 			<div class="load" *ngIf="loading">
 				<span class="let1">l</span>  
@@ -54,7 +54,7 @@
 				<!-- <span class="let6">n</span>  
 				<span class="let7">g</span>   -->
 			</div>
-			<button (click)="onLogin()" type="button" *ngIf="!loading">Sign In</button>
+			<button (click)="onLogin()" type="submit" *ngIf="!loading">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
