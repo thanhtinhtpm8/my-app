@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError, finalize, take, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
-
+import { DeviceDetectorService } from 'ngx-device-detector';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -16,7 +16,8 @@ export class LoginPageComponent implements OnInit {
   loading:any=false;
   loginForm:FormGroup = this.fb.group({
     userName:['', [Validators.required]],
-    password:['', Validators.required]
+    password:['', Validators.required],
+    deviceInfor:['']
   });
 
   registerForm:FormGroup = this.fb.group({
@@ -35,10 +36,11 @@ export class LoginPageComponent implements OnInit {
     signInButton?.addEventListener('click',()=>{
     container?.classList.remove("right-panel-active")
     })
+    this.loginForm.controls['deviceInfor'].setValue(this.deviceService.getDeviceInfo().browser+' - '+this.deviceService.getDeviceInfo().deviceType+' - '+this.deviceService.getDeviceInfo().os_version);
     
   }
   constructor(private fb: FormBuilder,private authService:AuthService,
-    private message:NzMessageService,private router: Router)
+    private message:NzMessageService,private router: Router,private deviceService: DeviceDetectorService)
   {
   }
   onLogin(){
@@ -106,4 +108,6 @@ export class LoginPageComponent implements OnInit {
   onLoginGG(data:any){
        this.loading=data;
   }
+
+
 }

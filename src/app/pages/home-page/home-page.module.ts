@@ -9,7 +9,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { CreateRoomComponent } from './create-room/create-room.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
-import { NgControl, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
 import { NzListModule } from 'ng-zorro-antd/list';

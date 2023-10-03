@@ -4,7 +4,7 @@
   <div class="card">
     <div class="row g-0">
       <div class="col-12 col-lg-7 col-xl-9">
-        <div class="py-2 px-4 border-bottom d-none d-lg-block">
+        <div class="py-2 px-4 border-bottom  d-lg-block">
           <div class="d-flex align-items-center py-1">
             <div class="position-relative" style="margin-right: 20px;">
               <nz-avatar-group *ngIf="roomDetail.listIdUser&&roomDetail.listIdUser.length>2">
@@ -64,7 +64,7 @@
         <div class="flex-grow-0 py-3 px-4 border-top">
           <div class="input-group">
                       
-<form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your Room" style="width: 100%;">
           <nz-input-group nzPrefixIcon="user" style="width: 100%;">
@@ -88,7 +88,7 @@
           <button nz-button nzType="primary" (click)="send()" class="btn btn-primary">Send</button>
         </nz-form-control>
       </nz-form-item>
-</form> 
+        </form> 
           </div>
         </div>
 

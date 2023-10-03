@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { catchError, finalize, take, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -22,7 +23,8 @@ export class LoginWithGoogleComponent implements OnInit{
     private authService:AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private message:NzMessageService
+    private message:NzMessageService,
+    private deviceService: DeviceDetectorService
     ) {this.googleAuthSDK(); }
   ngOnInit() {
     this.returnUrl = this.route.snapshot.paramMap.get('returnUrl') || '/';
@@ -33,7 +35,7 @@ export class LoginWithGoogleComponent implements OnInit{
     this.auth2.attachClickHandler(this.loginElement.nativeElement, {},
       (googleAuthUser: any) => {
         this.submitted.emit(true);
-        this.authService.logInGoogle({idToken:googleAuthUser.getAuthResponse().id_token}).subscribe((res:any)=>{
+        this.authService.logInGoogle({idToken:googleAuthUser.getAuthResponse().id_token,deviceInfor:this.deviceService.getDeviceInfo().browser+' - '+this.deviceService.getDeviceInfo().deviceType+' - '+this.deviceService.getDeviceInfo().os_version}).subscribe((res:any)=>{
           const { data, success, message } = res;
         if (success) {
           localStorage.setItem('tokenAccess', res.data.accessToken);
