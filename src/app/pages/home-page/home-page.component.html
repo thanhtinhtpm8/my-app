@@ -12,6 +12,8 @@
 <div nz-row>
   <div nz-col nzFlex="6">
     <video #local_video [autoplay]="true" [muted]="true"></video>
+    <button nz-button nzType="primary"  (click)="StartLocalDevice()">START</button>
+    <button nz-button nzType="primary" nzDanger (click)="pauLocalvideo()">STOP</button>
   </div>
   <div nz-col nzFlex="6">
     <video #received_video [autoplay]="true"></video>

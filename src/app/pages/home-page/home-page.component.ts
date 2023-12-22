@@ -92,4 +92,23 @@ export class HomePageComponent implements OnInit ,AfterViewInit {
   private async requestMediaDevice(): Promise<void>{
      this.localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
   }
+
+  StartLocalDevice(){
+    console.log('starting local stream');
+    this.localStream.getTracks().forEach((track:any) => {
+      track.enabled = true;
+    });
+    this.local_video.nativeElement.srcObject = this.localStream;
+
+    //this.localVideoActive = true;
+  }
+
+
+  pauLocalvideo(){
+    console.log('pause local stream');
+    this.localStream.getTracks().forEach((track:any) => {
+      track.enabled = false;
+    });
+    this.local_video.nativeElement.srcObject = undefined;
+  }
 }
