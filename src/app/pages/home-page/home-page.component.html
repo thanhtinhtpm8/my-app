@@ -9,3 +9,11 @@
       <app-chat-box [idRoom]="idRoomSelected" [usersDetail]="allUser" [myInfor]="myInfor"></app-chat-box>
     </div>
 </div>
+<div nz-row>
+  <div nz-col nzFlex="6">
+    <video #local_video [autoplay]="true" [muted]="true"></video>
+  </div>
+  <div nz-col nzFlex="6">
+    <video #received_video [autoplay]="true"></video>
+  </div>
+</div>
