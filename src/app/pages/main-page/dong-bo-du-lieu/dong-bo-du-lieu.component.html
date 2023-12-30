@@ -1,0 +1,43 @@
+<div class="title">Đồng bộ dữ liệu</div>
+<div class="content">
+<nz-table #rowSelectionTable  [nzData]="listDataDongBo"  [nzScroll]="{ x: '1000px', y: '55vh'}" >
+    <thead>
+        <tr>
+          <th [nzChecked]="true" ></th>
+          <th>ID</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Address</th>
+          <th>Address</th>
+          <th>Address</th>
+          <th>Address</th>
+          <th>Address</th>
+          <th>Address</th>
+          <th>Address</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td [nzChecked]="true"></td>
+          <td>{{data.id}}</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1fdddddddddđ</td>
+          <td>1fdddddddddddddđ</td>
+          <td>1fddddddddddddddddddddddddddddddđ</td>
+          <td>1fdddddddddddddddđ</td>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+</nz-table>
+</div>
+
+<div class="row-button">
+    <button nz-button nzType="dashed" nz-size="large"   nzShape="round" (click)="onSubmit('huy')" >Trở về</button>
+    <button nz-button nzType="primary" nz-size="large"   nzShape="round" (click)="onSubmit('dongbo')" >Đồng bộ dữ liệu</button>
+    <button nz-button nzType="primary" nz-size="large" style="background-color: rgb(117, 211, 74);"  nzShape="round" (click)="onSubmit('excel')" >Xuất excel</button>
+</div>

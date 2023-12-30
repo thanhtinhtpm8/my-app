@@ -7,9 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NZ_I18N, vi_VN } from 'ng-zorro-antd/i18n';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+  
   ],
   imports: [
     BrowserModule,

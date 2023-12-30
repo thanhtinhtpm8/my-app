@@ -13,6 +13,10 @@ const mediaConstraints = {
   // video: {width: 640, height: 480}  //  4:3
   // video: {width: 160, height: 120}  //  4:3
 };
+const offerOptions = {
+  offerToReceiveAudio: true,
+  offerToReceiveVideo: true
+};
 
 @Component({
   selector: 'app-home-page',
@@ -26,7 +30,7 @@ export class HomePageComponent implements OnInit ,AfterViewInit {
 
   //
   private localStream:any = MediaStream;
-
+  private perconection:any= RTCPeerConnection
 
   isVisible = false;
   allUser:any=[];
@@ -91,6 +95,7 @@ export class HomePageComponent implements OnInit ,AfterViewInit {
   //
   private async requestMediaDevice(): Promise<void>{
      this.localStream = await navigator.mediaDevices.getUserMedia(mediaConstraints);
+     this.pauLocalvideo();
   }
 
   StartLocalDevice(){
@@ -110,5 +115,28 @@ export class HomePageComponent implements OnInit ,AfterViewInit {
       track.enabled = false;
     });
     this.local_video.nativeElement.srcObject = undefined;
+  }
+  async call(){
+    this.createConnection();
+    this.localStream.getTracks().forEach((track:any) => {
+      this.perconection.addTrack(track,this.localStream)
+    });
+    try{
+      const offer: RTCSessionDescriptionInit = await this.perconection.createOffer(offerOptions)
+      await this.perconection.setLocalDescription(offer);
+      console.log(offer)
+      //send
+    }catch{
+
+    }
+  }
+  createConnection(){ 
+      this.perconection = new RTCPeerConnection({
+        iceServers:[
+          {urls:['stun.kundenserver.de:3478']}
+          
+        ]
+      })
+
   }
 }

@@ -1,0 +1,21 @@
+<div class="content">
+   <div class="a">
+    <nz-steps nzType="navigation" nzSize="small" [nzCurrent]="index" (nzIndexChange)="onIndexChange($event)">
+        <nz-step nzTitle="Lấy dữ liệu" nzStatus="process" [nzDescription]="!dataB1?'Lấy dữ liệu':(dataB1.donvi.tenDV)"></nz-step>
+        <nz-step nzTitle="So sánh dữ liệu" [nzStatus]="dataB1?'process':'wait'" [nzDescription]="!dataB1?'So sánh dữ liệu':(dataB1.thietbi.tenTB)"></nz-step>
+        <nz-step nzTitle="Đồng bộ dữ liệu"  [nzStatus]="setOfCheckedId.size!=0?'process':'wait'" [nzDescription]="'Đã chọn ' + setOfCheckedId.size"></nz-step>
+        <!-- <nz-step nzTitle="Step 4"  nzStatus="wait" nzDescription="This is a description."></nz-step> -->
+    </nz-steps>
+      <div class="steps-content" *ngIf="index==0">
+        <app-chon-du-lieu (B1Submit)="B1Submit($event)" [data]="dataB1" ></app-chon-du-lieu>
+      </div>
+      <div class="steps-content" *ngIf="index==1">
+        <app-so-sanh-du-lieu [listOfDataPmis]="listOfDataPmis" [listOfDataGis]="listOfDataGis" [setOfCheckedId]="setOfCheckedId" [data]="dataB1" (B2Submit)="B2Submit($event)"></app-so-sanh-du-lieu>
+      </div>
+      <div class="steps-content" *ngIf="index==2">
+        <app-dong-bo-du-lieu [listOfDataPmis]="listOfDataPmis" [setOfCheckedId]="setOfCheckedId" (B3Submit)="B3Submit($event)" ></app-dong-bo-du-lieu>
+      </div>
+
+   </div>
+   
+</div>

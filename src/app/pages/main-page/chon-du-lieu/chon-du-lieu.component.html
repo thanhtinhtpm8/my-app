@@ -1,0 +1,22 @@
+<div class="title">Chọn dữ liệu</div>
+<div nz-row style="margin-bottom: 30px;" >
+    <div nz-col nzSpan="24">
+        <span class="label" style="margin-right: 20px;" >Chọn đơn vị</span>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Chọn đơn vị" style="width: 30vh;" [(ngModel)]="selectDonVi">
+            <nz-option *ngFor="let option of listDonVi" [nzLabel]="option.tenDV" [nzValue]="option"></nz-option>
+        </nz-select>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24" style="margin-bottom: 30px;">
+        <span class="label" style="margin-right: 20px;">Chọn dữ liệu</span>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Chọn dữ liệu" style="width: 30vh;" [(ngModel)]="selectThietBi" >
+            <nz-option *ngFor="let option of listThietBi" [nzLabel]="option.tenTB" [nzValue]="option"></nz-option>
+        </nz-select>
+    </div>
+</div>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <button style="width: 150px;" nz-button nzType="primary" nz-size="large"  nzShape="round" (click)="layDuLieu()">Lấy dữ liệu</button>
+    </div>
+</div>
